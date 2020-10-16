@@ -36,11 +36,11 @@ const useStyles = makeStyles({
   },
 });
 
-const Product = ({ items, updateCart, placeOrder }) => {
+const Cart = ({ items, updateCart, placeOrder }) => {
   const classes = useStyles();
 
   function removeCartItem(productId) {
-    const updatedCart = items.filter(item => item._id !== productId);
+    const updatedCart = items.filter((item) => item._id !== productId);
     updateCart(updatedCart);
   }
 
@@ -67,7 +67,7 @@ const Product = ({ items, updateCart, placeOrder }) => {
       {items && items.length ? (
         <>
           <div className={classes.itemsContainer}>
-            {items.map(item => (
+            {items.map((item) => (
               <CartItem
                 key={item._id}
                 item={item}
@@ -87,7 +87,7 @@ const Product = ({ items, updateCart, placeOrder }) => {
                   {items.reduce(
                     (totalPrice, item) =>
                       totalPrice + item.price * item.selectedQty,
-                    0,
+                    0
                   )}
                 </Typography>
               </Grid>
@@ -111,4 +111,4 @@ const Product = ({ items, updateCart, placeOrder }) => {
   );
 };
 
-export default Product;
+export default Cart;

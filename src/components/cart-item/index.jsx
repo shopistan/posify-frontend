@@ -46,7 +46,12 @@ const CartItem = ({ item, removeItem, updateQty }) => {
 
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.image} image={image} title={name} />
+      <CardMedia
+        component={'img'}
+        className={classes.image}
+        image={image}
+        title={name}
+      />
       <CardContent className={classes.details}>
         <IconButton
           className={classes.deleteButton}
@@ -54,13 +59,19 @@ const CartItem = ({ item, removeItem, updateQty }) => {
         >
           <Icon>delete</Icon>
         </IconButton>
-        <Typography variant="subtitle1" className={classes.name}>
+        <Typography
+          variant="subtitle1"
+          className={classes.name}
+          data-label={'product-name'}
+        >
           {name}
         </Typography>
-        <Typography variant="body2" gutterBottom>
-          {sku}
+        <Typography variant="body2" data-label={'product-sku'} gutterBottom>
+          SKU: {sku}
         </Typography>
-        <Typography variant="subtitle2">${price}</Typography>
+        <Typography variant="subtitle2" data-label={'product-price'}>
+          ${price}
+        </Typography>
         <div className={classes.qtyWrapper}>
           <IconButton
             size="small"

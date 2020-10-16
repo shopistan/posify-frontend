@@ -91,11 +91,9 @@ const PlaceOrder = ({ cartData, cancelOrder, orderPlaced }) => {
               onSubmit={(fields, { setSubmitting }) => {
                 setSubmitting(true);
                 setSubmitError('');
-                console.log('submit', fields);
-                console.log('submit JSON', JSON.stringify(fields));
                 axios
                   .post(
-                    'https://fhfkzbydaj.execute-api.us-east-1.amazonaws.com/dev/sales',
+                    'https://nw9ulr2s82.execute-api.us-east-1.amazonaws.com/dev/sales',
                     JSON.stringify(fields)
                   )
                   .then((response) => {

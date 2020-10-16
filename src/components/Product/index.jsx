@@ -26,19 +26,30 @@ const useStyles = makeStyles({
 
 const Product = ({ product, addToCart }) => {
   const classes = useStyles();
-  const { _id, name, sku, quantity, price, image } = product;
+  const { name, sku, quantity, price, image } = product;
 
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.image} image={image} title={name} />
+      <CardMedia
+        component={'img'}
+        className={classes.image}
+        image={image}
+        title={name}
+      />
       <CardContent>
-        <Typography variant="subtitle1" className={classes.name}>
+        <Typography
+          variant="subtitle1"
+          className={classes.name}
+          data-label={'product-name'}
+        >
           {name}
         </Typography>
-        <Typography variant="body2" gutterBottom>
+        <Typography variant="body2" data-label={'product-sku'} gutterBottom>
           SKU: {sku}
         </Typography>
-        <Typography variant="subtitle2">${price}</Typography>
+        <Typography variant="subtitle2" data-label={'product-price'}>
+          ${price}
+        </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button
