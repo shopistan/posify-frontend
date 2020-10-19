@@ -5,4 +5,4 @@ module.exports = {
   GRPC_API: JSON.stringify('https://example.com/grpc'),
   GRAPHQL_API: JSON.stringify('https://example.com/graphql'),
   API_KEYWORDS: JSON.stringify(['example.com']),
-}
+};

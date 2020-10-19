@@ -1,9 +1,9 @@
 module.exports = function (api) {
-  api.cache(true)
+  api.cache(true);
 
-  const isProd = process.env.NODE_ENV === 'production'
+  const isProd = process.env.NODE_ENV === 'production';
 
-  const presets = ['@babel/preset-react']
+  const presets = ['@babel/preset-react'];
   const plugins = [
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
@@ -17,7 +17,7 @@ module.exports = function (api) {
       },
     ],
     'module:react-hot-loader/babel',
-  ]
+  ];
 
   if (isProd) {
     presets.push([
@@ -28,7 +28,7 @@ module.exports = function (api) {
         useBuiltIns: 'usage',
         exclude: ['transform-regenerator', 'transform-async-to-generator'],
       },
-    ])
+    ]);
     plugins.push(
       [
         'module:fast-async',
@@ -42,24 +42,22 @@ module.exports = function (api) {
         },
       ],
       'transform-react-remove-prop-types',
-      'lodash',
-    )
+      'lodash'
+    );
   } else {
-    plugins.push('@babel/plugin-syntax-object-rest-spread')
-    presets.push(
-      [
-        '@babel/preset-env',
-        {
-          targets: {
-            node: 'current',
-          },
+    plugins.push('@babel/plugin-syntax-object-rest-spread');
+    presets.push([
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current',
         },
-      ],
-    )
+      },
+    ]);
   }
 
   return {
     presets,
     plugins,
-  }
-}
+  };
+};

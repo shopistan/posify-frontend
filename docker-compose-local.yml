@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   app-local:
@@ -6,4 +6,4 @@ services:
       context: .
       dockerfile: Dockerfile-dev
     ports:
-      - "8000:8000"
+      - '8000:8000'

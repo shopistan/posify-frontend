@@ -1,14 +1,14 @@
-const { resolve } = require('path')
+const { resolve } = require('path');
 
-const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const buildProfile = require('./build-profile')
+const buildProfile = require('./build-profile');
 
 // if the size of resource is bigger than threshold,
 // it will be splitted into additional file
 // rather than bundle to javascript file
-const resourceThreshold = 8192
+const resourceThreshold = 8192;
 
 module.exports = {
   entry: {
@@ -83,9 +83,9 @@ module.exports = {
       Object.assign({}, buildProfile, {
         APP_VERSION: JSON.stringify(require('./package.json').version),
         GIT_COMMIT_HASH: JSON.stringify(
-          process.env.GIT_COMMIT_HASH || 'unknown_git_commit_hash',
+          process.env.GIT_COMMIT_HASH || 'unknown_git_commit_hash'
         ),
-      }),
+      })
     ),
 
     new CopyWebpackPlugin([
@@ -96,4 +96,4 @@ module.exports = {
       },
     ]),
   ],
-}
+};

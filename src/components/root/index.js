@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
-import { ApolloProvider } from 'react-apollo'
-import { Router } from '@reach/router'
-import { hot } from 'react-hot-loader/root'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
+import { Router } from '@reach/router';
+import { hot } from 'react-hot-loader/root';
 
-import App from 'components/app'
+import App from 'components/app';
 
 const Root = ({ store, apolloClient }) => (
   <Provider store={store}>
@@ -15,10 +15,10 @@ const Root = ({ store, apolloClient }) => (
       </Router>
     </ApolloProvider>
   </Provider>
-)
+);
 Root.propTypes = {
   store: PropTypes.object.isRequired,
   apolloClient: PropTypes.object.isRequired,
-}
+};
 
-export default hot(Root)
+export default hot(Root);

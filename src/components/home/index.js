@@ -43,11 +43,12 @@ const Home = () => {
         setProducts(response.data.data);
       })
       .catch((err) => {
+        console.log(err);
         setProducts('Something went wrong');
       });
   }, []);
 
-  function addCartItem(product) {
+  function addCartItem (product) {
     if (!cartItems.find((item) => item._id === product._id)) {
       product['selectedQty'] = 1;
       setCartItems((prevData) => [...prevData, product]);
@@ -60,16 +61,16 @@ const Home = () => {
       }
     }
   }
-  function updateCartItems(products) {
+  function updateCartItems (products) {
     setCartItems(products);
   }
-  function handlePlaceOrder() {
+  function handlePlaceOrder () {
     setPlaceOrder(true);
   }
-  function cancelPlaceOrder(e) {
+  function cancelPlaceOrder (e) {
     setPlaceOrder(e);
   }
-  function reset() {
+  function reset () {
     setCartItems([]);
     setPlaceOrder(false);
   }
@@ -95,7 +96,7 @@ const Home = () => {
               <Alert severity="error">{products}</Alert>
             )
           ) : (
-            <Loading />
+            <Loading variant="normal" />
           )}
         </div>
       </div>

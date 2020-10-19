@@ -1,4 +1,4 @@
-const proxyConfig = {}
+const proxyConfig = {};
 
 // An example
 // const proxyConfig = {
@@ -20,4 +20,4 @@ const proxyConfig = {}
 //   },
 // }
 
-module.exports = proxyConfig
+module.exports = proxyConfig;
