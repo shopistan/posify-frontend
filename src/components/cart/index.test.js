@@ -1,38 +1,26 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import CartItem from './../cart';
+const faker = require('faker');
+
+const getCartItem = () => {
+  return {
+    _id: faker.random.uuid(),
+    name: faker.commerce.productName(),
+    sku: faker.commerce.productAdjective(),
+    price: faker.commerce.price(),
+    image: faker.image.imageUrl(),
+    quantity: faker.random.number(),
+    selectedQty: faker.random.number(),
+  };
+};
+
+const getCartItems = (number = 3) => {
+  return new Array(number).fill(undefined).map(getCartItem);
+};
 
 describe('Cart', () => {
-  const cartItems = [
-    {
-      _id: 1,
-      name: 'test name',
-      sku: 'test sku',
-      quantity: 20,
-      price: 2000,
-      image: 'image source',
-      selectedQty: 1,
-    },
-    {
-      _id: 2,
-      name: 'test name',
-      sku: 'test sku',
-      quantity: 20,
-      price: 2000,
-      image: 'image source',
-      selectedQty: 1,
-    },
-    {
-      _id: 3,
-      name: 'test name',
-      sku: 'test sku',
-      quantity: 20,
-      price: 2000,
-      image: 'image source',
-      selectedQty: 1,
-    },
-  ];
-
+  const cartItems = getCartItems();
   it('Cart array rendered', () => {
     cartItems.forEach((item) => {
       const cartItem = mount(

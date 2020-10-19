@@ -1,15 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Product from './index';
+const faker = require('faker');
 
 const productItem = mount(
   <Product
     product={{
-      name: 'test name',
-      sku: 'test sku',
-      quantity: 20,
-      price: 2000,
-      image: 'image source',
+      name: faker.commerce.productName(),
+      sku: faker.commerce.productAdjective(),
+      price: faker.commerce.price(),
+      image: faker.image.imageUrl(),
+      quantity: faker.random.number(),
     }}
   />
 );

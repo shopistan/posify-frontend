@@ -49,6 +49,7 @@
     "@reach/router": "^1.2.1",
     "apollo-boost": "^0.3.1",
     "axios": "^0.18.0",
+    "faker": "^5.1.0",
     "formik": "^2.2.0",
     "graphql": "^14.2.1",
     "graphql-tag": "^2.10.1",

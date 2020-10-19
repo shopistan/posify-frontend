@@ -1,17 +1,18 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import CartItem from './index';
+const faker = require('faker');
 
 const cartItem = mount(
   <CartItem
     item={{
-      _id: 1,
-      name: 'test name',
-      sku: 'test sku',
-      quantity: 20,
-      price: 2000,
-      image: 'image source',
-      selectedQty: 1,
+      _id: faker.random.uuid(),
+      name: faker.commerce.productName(),
+      sku: faker.commerce.productAdjective(),
+      price: faker.commerce.price(),
+      image: faker.image.imageUrl(),
+      quantity: faker.random.number(),
+      selectedQty: faker.random.number(),
     }}
   />
 );

@@ -1,35 +1,25 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Product from './../Product';
+const faker = require('faker');
+
+const getProduct = () => {
+  return {
+    _id: faker.random.uuid(),
+    name: faker.commerce.productName(),
+    sku: faker.commerce.productAdjective(),
+    price: faker.commerce.price(),
+    image: faker.image.imageUrl(),
+    quantity: faker.random.number(),
+  };
+};
+
+const getProducts = (number = 3) => {
+  return new Array(number).fill(undefined).map(getProduct);
+};
 
 describe('Home', () => {
-  const products = [
-    {
-      _id: 1,
-      name: 'product name',
-      sku: 'productsku',
-      quantity: 10,
-      price: 2000,
-      image: 'image.jpg',
-    },
-    {
-      _id: 2,
-      name: 'product name',
-      sku: 'productsku',
-      quantity: 10,
-      price: 2000,
-      image: 'image.jpg',
-    },
-    {
-      _id: 3,
-      name: 'product name',
-      sku: 'productsku',
-      quantity: 10,
-      price: 2000,
-      image: 'image.jpg',
-    },
-  ];
-
+  const products = getProducts();
   it('Products array rendered', () => {
     products.forEach((item) => {
       const productItem = mount(
