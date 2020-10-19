@@ -94,7 +94,8 @@ const PlaceOrder = ({ cartData, cancelOrder, orderPlaced }) => {
                 axios
                   .post(
                     'https://nw9ulr2s82.execute-api.us-east-1.amazonaws.com/dev/sales',
-                    JSON.stringify(fields)
+                    JSON.stringify(fields),
+                    { mode: 'no-cors' }
                   )
                   .then((response) => {
                     console.log('res', response);
@@ -105,6 +106,7 @@ const PlaceOrder = ({ cartData, cancelOrder, orderPlaced }) => {
                     }, 9000);
                   })
                   .catch((err) => {
+                    console.log(err);
                     setSubmitting(false);
                     setSubmitError('Something went wrong');
                   });
@@ -295,19 +297,19 @@ const PlaceOrder = ({ cartData, cancelOrder, orderPlaced }) => {
           </DialogContent>
         </>
       ) : (
-        <DialogContent className={classes.modalCenter}>
-          <Icon className={classes.successIcon}>check_circle_outline</Icon>
-          <Typography variant="h5" gutterBottom>
-            Thank you for your order
+          <DialogContent className={classes.modalCenter}>
+            <Icon className={classes.successIcon}>check_circle_outline</Icon>
+            <Typography variant="h5" gutterBottom>
+              Thank you for your order
           </Typography>
-          <Typography variant="h6" gutterBottom>
-            Your order has been placed successfully.
+            <Typography variant="h6" gutterBottom>
+              Your order has been placed successfully.
           </Typography>
-          <Button type="button" color="primary" onClick={orderPlaced}>
-            Ok
+            <Button type="button" color="primary" onClick={orderPlaced}>
+              Ok
           </Button>
-        </DialogContent>
-      )}
+          </DialogContent>
+        )}
     </Dialog>
   );
 };
