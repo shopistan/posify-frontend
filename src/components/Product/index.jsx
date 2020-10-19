@@ -58,6 +58,7 @@ const Product = ({ product, addToCart }) => {
           onClick={() => addToCart(product)}
           disabled={quantity === 0}
           classes={{ disabled: classes.outOfStock }}
+          data-label={'addtocart'}
         >
           {quantity > 0 ? 'Add to Cart' : 'Out of Stock'}
         </Button>
