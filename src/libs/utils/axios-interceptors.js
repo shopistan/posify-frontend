@@ -1,44 +1,44 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import { getAuthToken } from 'libs/utils/oauth-token'
+import { getAuthToken } from 'libs/utils/oauth-token';
 
 export function initAxiosInterceptors () {
-  axios.interceptors.request.use(config => {
-    let shouldAddToken = false
+  axios.interceptors.request.use((config) => {
+    let shouldAddToken = false;
     for (const keyword of API_KEYWORDS) {
       if (config.url.includes(keyword)) {
-        shouldAddToken = true
-        break
+        shouldAddToken = true;
+        break;
       }
     }
     if (shouldAddToken) {
-      const token = getAuthToken()
+      const token = getAuthToken();
 
-      config.headers.Authorization = token
+      config.headers.Authorization = token;
     }
 
-    return config
-  })
+    return config;
+  });
 
   axios.interceptors.response.use(
-    response => response,
-    error => {
+    (response) => response,
+    (error) => {
       if (error.response.status === 401) {
-        let shouldLogin = false
+        let shouldLogin = false;
         for (const keyword of API_KEYWORDS) {
           if (error.config.url != null && error.config.url.includes(keyword)) {
-            shouldLogin = true
-            break
+            shouldLogin = true;
+            break;
           }
         }
 
         if (shouldLogin) {
-          alert(`TODO: REDIRECT TO SSO`)
+          alert(`TODO: REDIRECT TO SSO`);
           // TODO: REDIRECT TO SSO
         }
       }
 
-      return error
-    },
-  )
+      return error;
+    }
+  );
 }

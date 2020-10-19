@@ -1,14 +1,14 @@
-const merge = require('webpack-merge')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const safeParser = require('postcss-safe-parser')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
-const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const merge = require('webpack-merge');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const safeParser = require('postcss-safe-parser');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-const baseConfig = require('./webpack.base')
+const baseConfig = require('./webpack.base');
 
 module.exports = merge(baseConfig, {
   bail: true,
@@ -93,10 +93,8 @@ module.exports = merge(baseConfig, {
         cache: true,
         parallel: true,
         uglifyOptions: {
-          compress: {
-            warnings: false,
-            comparisons: false,
-          },
+          warnings: false,
+          comparisons: false,
           output: {
             comments: false,
             ascii_only: false,
@@ -139,4 +137,4 @@ module.exports = merge(baseConfig, {
       name: 'runtime',
     },
   },
-})
+});

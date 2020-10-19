@@ -1,21 +1,21 @@
-const { posix } = require('path')
+const { posix } = require('path');
 
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const merge = require('webpack-merge')
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const merge = require('webpack-merge');
 
-const baseConfig = require('./webpack.base')
-const proxyConfig = require('./dev-proxy')
+const baseConfig = require('./webpack.base');
+const proxyConfig = require('./dev-proxy');
 
 const CONFIG = {
   port: 8000,
   host: '0.0.0.0',
-}
+};
 
 baseConfig.module.rules.find(
-  rule => rule.loader === 'babel-loader',
-).options.cacheDirectory = true
+  (rule) => rule.loader === 'babel-loader'
+).options.cacheDirectory = true;
 module.exports = merge(baseConfig, {
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -93,9 +93,7 @@ module.exports = merge(baseConfig, {
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
         messages: [
-          `Your application is running here: http://${CONFIG.host}:${
-            CONFIG.port
-          }`,
+          `Your application is running here: http://${CONFIG.host}:${CONFIG.port}`,
         ],
       },
     }),
@@ -122,4 +120,4 @@ module.exports = merge(baseConfig, {
     quiet: true,
     proxy: proxyConfig,
   },
-})
+});

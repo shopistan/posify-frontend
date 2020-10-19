@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   loader: {
@@ -23,12 +24,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Loading = props => {
+const Loading = ({ variant }) => {
+  // const { variant } = props;
   const classes = useStyles();
   return (
     <div
       className={
-        props.variant && props.variant === 'overlay'
+        variant && variant === 'overlay'
           ? classes.overlay
           : classes.loader
       }
@@ -39,3 +41,7 @@ const Loading = props => {
 };
 
 export default Loading;
+
+Loading.propTypes = {
+  variant: PropTypes.string.isRequired,
+};
